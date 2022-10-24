@@ -1,6 +1,10 @@
+'use strict';
 /* Задания на урок:
 
 1) Удалить все рекламные блоки со страницы (правая часть сайта)
+
+
+
 
 2) Изменить жанр фильма, поменять "комедия" на "драма"
 
@@ -12,10 +16,28 @@
 
 5) Добавить нумерацию выведенных фильмов */
 
-'use strict';
+//const provoAdv = document.querySelector('.promo__adv');
+const provoAdv = document.getElementsByClassName('promo__adv')
+//provoAdv[0].style.display = 'none';
+provoAdv[0].style.visibility = 'hidden';
+//console.log(provoAdv);
+
+//Задани 2
+const promoGenre = document.querySelector('.promo__genre');
+
+//promoGenre.innerHTML = 'Драмма';
+promoGenre.textContent = 'Драма';
+
+//Задание 3
+const promoBg = document.querySelector('.promo__bg');
+promoBg.style.backgroundImage = 'url("img/bg.jpg")';
+//console.log(promoBg);
+
+//Задание 4
 
 const movieDB = {
     movies: [
+        "ISAEV Король",
         "Логан",
         "Лига справедливости",
         "Ла-ла лэнд",
@@ -23,4 +45,16 @@ const movieDB = {
         "Скотт Пилигрим против..."
     ]
 };
+/*
+const promoInteractive = document.querySelectorAll('.promo__interactive-item');
+let i = 0;
+promoInteractive.forEach (item => {
+    //console.log(movieDB.movies[item]);
+    item.textContent = movieDB.movies[i];
+    i++;
+})
+*/
+const promoInteractivelist = document.querySelector('.promo__interactive-list');
+const promoInteractive = document.querySelectorAll('.promo__interactive-item');
+promoInteractivelist.remove();
 
