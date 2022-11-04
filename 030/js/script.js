@@ -54,7 +54,29 @@ promoInteractive.forEach (item => {
     i++;
 })
 */
+
 const promoInteractivelist = document.querySelector('.promo__interactive-list');
-const promoInteractive = document.querySelectorAll('.promo__interactive-item');
-promoInteractivelist.remove();
+promoInteractivelist.innerHTML = "";
+
+movieDB.movies.sort();
+console.log(movieDB.movies);
+movieDB.movies.forEach((film, i) => {
+    promoInteractivelist.innerHTML += `
+        <li class="promo__interactive-item"> ${i+1} ${film}
+            <div class="delete"></div>
+        </li>
+    `;
+
+});
+
+
+
+//const promoInteractive = document.querySelectorAll('.promo__interactive-item');
+//promoInteractivelist.remove();
+//document.querySelector('.promo__interactive-title').append('<li class="promo__interactive-item">МОРЖ<div class="delete"></div></li>')
+
+
+
+
+
 
