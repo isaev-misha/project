@@ -1,5 +1,5 @@
 'use strict';
-
+// закончил на 24:40 минуте
 document.addEventListener('DOMContentLoaded', () =>{
 
 
@@ -26,15 +26,20 @@ document.addEventListener('DOMContentLoaded', () =>{
 
     addForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        const newFilm = addInput.value;
+        let newFilm = addInput.value;
         const favorite = checkbox.checked;
         if (newFilm) {
+            if (newFilm.length > 21) {
+                newFilm = `${newFilm.substring(0 , 22)}...`;
+            }
+            //const newFilm = newFilm.slice(0,20);
             movieDB.movies.push(newFilm);
+        
             sortArr(movieDB.movies);
             createMovieList(movieDB.movies, movieList);
         }
         event.target.reset();
-    });
+});
 
     //Удалеие рекламы
     const deleteAdv = (arr) => {
