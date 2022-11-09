@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () =>{
           addInput = addForm.querySelector('.adding__input'),
           checkbox = addForm.querySelector('[type=checkbox]'),
           movieList = document.querySelector('.promo__interactive-list'),
-          adv = document.querySelectorAll('.promo__adv img');
+          adv = document.querySelectorAll('.promo__adv img'),
+          deleteMovie = document.querySelector('.delete');
 
         const sortArr = (arr) => {
             arr.sort();
@@ -34,7 +35,11 @@ document.addEventListener('DOMContentLoaded', () =>{
             }
             //const newFilm = newFilm.slice(0,20);
             movieDB.movies.push(newFilm);
-        
+            
+            if (!!favorite) {
+                console.log('добавляем любимый фильм');
+            }
+
             sortArr(movieDB.movies);
             createMovieList(movieDB.movies, movieList);
         }
@@ -62,10 +67,11 @@ document.addEventListener('DOMContentLoaded', () =>{
 
    
 
-    sortArr(movieDB.movies);
+    
 
     function createMovieList (films, parent) {
         parent.innerHTML = "";
+        sortArr(films);
         films.forEach((film, i) => {
             parent.innerHTML += `
                 <li class="promo__interactive-item"> ${i+1} ${film}
@@ -74,10 +80,36 @@ document.addEventListener('DOMContentLoaded', () =>{
             `;
         
         });
+        document.querySelectorAll('.delete').forEach((btn, i) =>{
+            btn.addEventListener('click', () => {
+                btn.parentElement.remove();
+                movieDB.movies.splice(i, 1);
+                createMovieList(films, parent);
+            })
+        });
     };
+
+
+//  console.log(deleteMovie);
+//    deleteMovie.addEventListener('mouseover', (event) => {
+//        console.timeLog(event);
+//   });
+        
+/*
+    checkbox.addEventListener('click', (e) =>{
+        // console.log('добавляем любимый фильм');
+        if (e.target.checked == true) {
+        console.log('добавляем любимый фильм');
+        }
+    });
+  */      
 
     makeChanges();
     deleteAdv(adv);
     createMovieList(movieDB.movies, movieList);
 
+
+
+
 });
+
