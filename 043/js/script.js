@@ -91,5 +91,41 @@ function setClock (selector, endtime) {
 }
     setClock('.timer', deadline);
 
+    //Timer
+    const modal = document.querySelector('.modal'),
+          modalTrigger = document.querySelectorAll('[data-modal'),
+          modalCloseBtn = document.querySelector('[data-close]');
+     
+          modalTrigger.forEach(btn => {
+            btn.addEventListener('click', (event) =>{
+                // modal.classList.add('show');
+                // modal.classList.remove('hide');
+                modal.classList.toggle('show');
+                document.body.style.overflow = "hidden";
+            });
+        });
+
+    function closeModel() {
+              // modal.classList.add('hide');
+              // modal.classList.remove('show');
+                modal.classList.toggle('show');
+                document.body.style.overflow = "";
+    }      
+
+    modalCloseBtn.addEventListener('click', closeModel)
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModel();
+        };
+    })
+
+    document.addEventListener('keydown', (e) => {
+        if (e.code === "Escape" && modal.classList.contains('show')) {
+            closeModel();
+        }
+    });
+         
+
 });
 
